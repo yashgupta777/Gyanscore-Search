@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Gyanscore Search</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/jquery-1.12.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container container-outer">
+		<div class="container-fluid">
+			<div id="page-wrapper">
+  				<h1>GyanScore Search Demo</h1>
+  					<input type="text" id="default" list="languages" placeholder="Search">
+					  <datalist id="languages">
+					    <option value="paytm">
+					    <option value="paytm recharge">
+					    <option value="paytm offers">
+					    <option value="paypal">
+					    <option value="Ruby">
+					    <option value="PHP">
+					    <option value="Go">
+					    <option value="England">
+					    <option value="Python">
+					    <option value="Agra">
+					    <option value="C#">
+					    <option value="C++">
+					  </datalist> 
+			</div>
+		</div>
+
+	</div>
+</body>
+<script type="text/javascript">
+// Get the <datalist> and <input> elements.
+var dataList = document.getElementById('json-datalist');
+
+
+// Create a new XMLHttpRequest.
+var request = new XMLHttpRequest();
+
+// Handle state changes for the request.
+request.onreadystatechange = function(response) {
+  if (request.readyState === 4) {
+    if (request.status === 200) {
+      // Parse the JSON
+      var jsonOptions = JSON.parse(request.responseText);
+  
+      // Loop over the JSON array.
+      jsonOptions.forEach(function(item) {
+        // Create a new <option> element.
+        var option = document.createElement('option');
+        // Set the value using the item in the JSON array.
+        option.value = item;
+        // Add the <option> element to the <datalist>.
+        dataList.appendChild(option);
+      });
+      
+      
+    }
+  }
+};
+
+
+
+// Set up and make the request.
+request.open('GET', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/4621/html-elements.json', true);
+request.send();
+
+
+</script>
+</html>
